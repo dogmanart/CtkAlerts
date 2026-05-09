@@ -1,15 +1,22 @@
 import customtkinter as ctk
 import winsound
+import tkinter
 
 def CtkMessage(parent, name, desc):
-    alert = ctk.CTkToplevel(parent) 
-    alert.title(name)
-    alert.geometry("250x160")
-    alert.resizable(False, False)
-    alert.attributes("-topmost", True)
-    ctk.CTkLabel(alert, text=str(desc)).pack(pady=20)
-    winsound.MessageBeep(winsound.MB_ICONASTERISK)
-    alert.wait_window()
+    try:
+        alert = ctk.CTkToplevel(parent)
+        alert.title(name)
+        alert.geometry("250x160")
+        alert.resizable(False, False)
+        alert.attributes("-topmost", True)
+        ctk.CTkLabel(alert, text=str(desc)).pack(pady=20)
+        winsound.MessageBeep(winsound.MB_ICONASTERISK)
+        alert.lift()
+        alert.focus_force()
+        alert.grab_set()
+        alert.wait_window()
+    except tkinter.TclError:
+        pass
 
 def CtkQuestion(parent, name, desc, opt1, opt2):
     question = ctk.CTkToplevel(parent) 
