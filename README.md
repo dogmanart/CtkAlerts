@@ -8,3 +8,4 @@ Ctk Alerts to import into customtkinter code. Asks questions and shows messages.
 # Documentation
 CtkMessage(str(master), str(title), str(text))
 <br>CtkQuestion(str(master), str(title), str(question), str(option 1), str(option 2))
+<br>CtkOk(str(master), str(title), str(text))
