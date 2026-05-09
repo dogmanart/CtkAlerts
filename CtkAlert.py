@@ -39,3 +39,22 @@ def CtkQuestion(parent, name, desc, opt1, opt2):
     winsound.MessageBeep(winsound.MB_ICONEXCLAMATION)
     question.wait_window()
     return question.choice
+
+def CtkOk(parent, name, desc):
+    try:
+        alert = ctk.CTkToplevel(parent)
+        alert.title(name)
+        alert.geometry("250x160")
+        alert.resizable(False, False)
+        alert.attributes("-topmost", True)
+        ctk.CTkLabel(alert, text=str(desc)).pack(pady=20)
+        def destroyok(): 
+            alert.destroy()
+        ctk.CTkButton(alert, text=str("OK"), width=90, command=lambda:destroyok()).place(x=25, y=110)
+        winsound.MessageBeep(winsound.MB_ICONASTERISK)
+        alert.lift()
+        alert.focus_force()
+        alert.grab_set()
+        alert.wait_window()
+    except tkinter.TclError:
+        pass
